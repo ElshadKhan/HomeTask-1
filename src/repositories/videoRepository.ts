@@ -38,5 +38,19 @@ export const videoRepository = {
     findVideoById(id: number) {
         let video = videos.find(v => v.id === id);
         return video
-    }
+    },
+    createVideo(title: string, author: string, availableResolutions: any) {
+        const newVideo = {
+            id: +(new Date()),
+            title: title,
+            author: author,
+            canBeDownloaded: true,
+            minAgeRestriction: null,
+            createdAt: "2022-10-15T14:37:24.782Z",
+            publicationDate: "2022-10-15T14:37:24.782Z",
+            availableResolutions: availableResolutions
+        }
+        videos.push(newVideo)
+        return newVideo
+    },
 }
