@@ -3,4 +3,4 @@ import {videoControllers} from "../controllers/videoController";
 
 export const videoRouter = Router({})
 
-videoRouter.use('/get', videoControllers)
+videoRouter.use('/api', videoControllers)
