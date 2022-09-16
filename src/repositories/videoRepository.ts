@@ -32,7 +32,16 @@ const videos = [{
         "P144"
     ]
 }]
-const resolutions = [ "P144", "P240", "P360", "P480", "P720", "P1080", "P1440", "P2160" ]
+export enum Resolutions {
+    P144 = "P144", "P240", "P360", "P480", "P720", "P1080", "P1440", "P2160"
+}
+
+const arrayREsolutions  = Object.values(Resolutions)
+
+const bodyArray: Resolutions[] = [];
+
+const result =  bodyArray.every((element) => arrayREsolutions.includes(element))
+
 // let army = {
 //     minAge: 18,
 //     maxAge: 27,
@@ -46,7 +55,7 @@ export const videoRepository = {
         let video = videos.find(v => v.id === id);
         return video
     },
-    createVideo(title: string, author: string, availableResolutions?: any) {
+    createVideo(title: string, author: string, availableResolutions?: Array<Resolutions>) {
         const array: any = []
         const validation = availableResolutions.map((a: string) => {
             resolutions.map((b) => {if(a === b) {
