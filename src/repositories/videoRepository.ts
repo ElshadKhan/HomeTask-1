@@ -79,7 +79,7 @@ export const videoRepository = {
                 id: +(new Date()),
                 title: title,
                 author: author,
-                canBeDownloaded: true,
+                canBeDownloaded: false,
                 minAgeRestriction: null,
                 createdAt: (new Date())?.toISOString(),
                 publicationDate: new Date(Date.now() + (3600 * 1000 * 24))?.toISOString(),
