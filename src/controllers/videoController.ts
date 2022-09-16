@@ -17,5 +17,9 @@ videoControllers.get('/videos/:id', (req: Request, res: Response) => {
 })
 videoControllers.post('/videos', (req: Request, res: Response) => {
     const newVideo = videoRepository.createVideo(req.body.title, req.body.author, req.body.availableResolutions)
-    res.status(201).send(newVideo)
+    if (newVideo) {
+        res.status(201).send(newVideo)
+    } else {
+        res.status(400).send(videoRepository.errorsVideos())
+    }
 })
