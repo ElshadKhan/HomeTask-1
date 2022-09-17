@@ -27,7 +27,7 @@ export const videoRepository = {
         return video
     },
     createVideo(title: string, author: string, availableResolutions: Array<string>) {
-        var newVideo: any = {
+        let newVideo: any = {
             id: +(new Date()),
             title: title,
             author: author,
@@ -39,5 +39,19 @@ export const videoRepository = {
         }
         videos.push(newVideo)
         return newVideo
+    },
+    updateVideo(id: number, title: string, author: string, availableResolutions: Resolutions[], canBeDownloaded: boolean, minAgeRestriction: number, publicationDate: string) {
+        let video = videos.find(p => p.id === id);
+        if (video) {
+             video.title = title,
+             video.author = author,
+             video.canBeDownloaded = canBeDownloaded,
+             video.minAgeRestriction = minAgeRestriction,
+             video.availableResolutions = availableResolutions,
+             video.publicationDate = publicationDate
+            return true
+        } else {
+            return false
+        }
     },
 }
