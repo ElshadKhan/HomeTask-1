@@ -32,7 +32,7 @@ videoControllers.post('/videos', (req: Request, res: Response) => {
 
     const errors: {message: string, field: string}[] = []
 
-    if (!result || availableResolutions ) {
+    if (!result) {
         errors.push({message: 'availableResolutions is wrong', field: 'availableResolutions'})
     }
     if(!title || typeof title !== "string" || !title.trim() || title.length > 40) {
