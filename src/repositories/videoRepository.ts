@@ -63,5 +63,9 @@ export const videoRepository = {
                 return false
             }
         }
+    },
+    deleteAllVideo() {
+        videos = []
+        return true
     }
 }

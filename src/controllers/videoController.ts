@@ -108,20 +108,16 @@ videoControllers.put('/videos/:id', (req: Request, res: Response) => {
     }
 })
 videoControllers.delete('/videos/:id', (req: Request, res: Response) => {
-    console.log("id", req.params.id)
     const isDeleted = videoRepository.deleteVideo(+req.params.id)
     if (isDeleted) {
-        res.status(204)
+        res.sendStatus(204)
     } else {
-        res.status(404)
+        res.sendStatus(404)
     }
 })
-videoControllers.delete('/videos/:id', (req: Request, res: Response) => {
-    console.log("id", req.params.id)
-    const isDeleted = videoRepository.deleteVideo(+req.params.id)
+videoControllers.delete('/testing/all-data', (req: Request, res: Response) => {
+    const isDeleted = videoRepository.deleteAllVideo()
     if (isDeleted) {
-        res.status(204)
-    } else {
-        res.status(404)
+        res.sendStatus(204)
     }
 })
