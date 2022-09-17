@@ -32,15 +32,13 @@ const videos = [{
         "P144"
     ]
 }]
-export enum Resolutions {
-    P144 = "P144", "P240", "P360", "P480", "P720", "P1080", "P1440", "P2160"
-}
 
-const arrayREsolutions  = Object.values(Resolutions)
 
-const bodyArray: Resolutions[] = [];
 
-const result =  bodyArray.every((element) => arrayREsolutions.includes(element))
+
+
+
+
 
 // let army = {
 //     minAge: 18,
@@ -55,63 +53,18 @@ export const videoRepository = {
         let video = videos.find(v => v.id === id);
         return video
     },
-    createVideo(title: string, author: string, availableResolutions?: Array<Resolutions>) {
-        const array: any = []
-        const validation = availableResolutions.map((a: string) => {
-            resolutions.map((b) => {if(a === b) {
-                array.push(a)
-                return
-            } })
-        })
-        function unique(arr: any) {
-            let result: any = [];
-            for (let str of arr) {
-                if (!result.includes(str)) {
-                    result.push(str);
-                }
-            }
-            return result;
+    createVideo(title: string, author: string, availableResolutions: Array<string>) {
+        var newVideo: any = {
+            id: +(new Date()),
+            title: title,
+            author: author,
+            canBeDownloaded: false,
+            minAgeRestriction: null,
+            createdAt: (new Date()).toISOString(),
+            publicationDate: new Date(Date.now() + (3600 * 1000 * 24)).toISOString(),
+            availableResolutions: availableResolutions || []
         }
-        function compare() {
-            let c = true
-            for(let i = 0; i < availableResolutions.length; i++) {// Цикл по всем эле­мен­там
-                if ((unique(array)[i]) !== availableResolutions[i]) {
-                    c = false;
-                } else {
-                    c = true;
-                }
-            }
-            return c
-        }
-        if (compare() !== false) {
-            var newVideo: any = {
-                id: +(new Date()),
-                title: title,
-                author: author,
-                canBeDownloaded: false,
-                minAgeRestriction: null,
-                createdAt: (new Date())?.toISOString(),
-                publicationDate: new Date(Date.now() + (3600 * 1000 * 24))?.toISOString(),
-                availableResolutions: availableResolutions
-            }
-            videos.push(newVideo)
-            return newVideo
-        } else {
-             newVideo = false;
-        }
-
-
+        videos.push(newVideo)
         return newVideo
     },
-    errorsVideos(){
-        const errors = {
-            "errorsMessages": [
-                {
-                    "message": "Message with error explanation for certain field",
-                    "field": "availableResolutions"
-                }
-            ]
-        }
-        return errors
-    }
 }
