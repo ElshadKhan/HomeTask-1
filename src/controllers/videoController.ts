@@ -100,7 +100,7 @@ videoControllers.put('/videos/:id', (req: Request, res: Response) => {
         errors.push({message: 'publicationDate is wrong', field: 'publicationDate'})
     }
     if (errors.length) {
-        return res.status(400).send({"errorsMessages": errors})
+        return res.status(404).send({"errorsMessages": errors})
     }
     const updateVideo = videoRepository.updateVideo(+req.params.id, req.body.title, req.body.author, req.body.availableResolutions, req.body.canBeDownloaded, req.body.minAgeRestriction, req.body.publicationDate)
     if (updateVideo) {
