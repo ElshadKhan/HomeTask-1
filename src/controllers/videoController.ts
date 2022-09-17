@@ -1,6 +1,5 @@
 import {Request, Response, Router} from "express";
 import {videoRepository} from "../repositories/videoRepository";
-import {type} from "os";
 
 export const videoControllers = Router({})
 
@@ -108,11 +107,11 @@ videoControllers.put('/videos/:id', (req: Request, res: Response) => {
         res.sendStatus(204)
     }
 })
-videoControllers.delete('videos/:id', (req: Request, res: Response) => {
+videoControllers.delete('/videos/:id', (req: Request, res: Response) => {
     const isDeleted = videoRepository.deleteVideo(+req.params.id)
     if (isDeleted) {
-        res.send(204)
+        res.sendStatus(204)
     } else {
-        res.send(404)
+        res.sendStatus(404)
     }
 })
