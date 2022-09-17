@@ -108,6 +108,7 @@ videoControllers.put('/videos/:id', (req: Request, res: Response) => {
     }
 })
 videoControllers.delete('/videos/:id', (req: Request, res: Response) => {
+    console.log("id", req.params.id)
     const isDeleted = videoRepository.deleteVideo(+req.params.id)
     if (isDeleted) {
         res.sendStatus(204)
