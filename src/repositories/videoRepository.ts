@@ -55,14 +55,15 @@ export const videoRepository = {
         }
     },
     deleteVideo(id: number) {
+        console.log("id", id)
         for (let i = 0; i<videos.length; i++) {
+            console.log("videos[i]", videos[i])
             if (videos[i].id === id) {
                 videos.splice(i,1)
                 return true
-            } else {
-                return false
             }
         }
+        return false
     },
     deleteAllVideo() {
         videos = []
