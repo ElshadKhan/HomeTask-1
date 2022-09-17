@@ -54,4 +54,14 @@ export const videoRepository = {
             return false
         }
     },
+    deleteVideo(id: number) {
+        for (let i = 0; i<videos.length; i++) {
+            if (videos[i].id === id) {
+                videos.splice(i,1)
+                return true
+            } else {
+                return false
+            }
+        }
+    }
 }
