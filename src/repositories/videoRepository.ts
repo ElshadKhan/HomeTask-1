@@ -1,52 +1,25 @@
-const videos = [{
-    id: 1,
-    title: "string1",
-    author: "author1",
-    canBeDownloaded: new Date(),
-    minAgeRestriction: null,
-    createdAt: (new Date())?.toISOString(),
-    publicationDate: new Date(Date.now() + (3600 * 1000 * 24))?.toISOString(),
-    availableResolutions: [
-        "P144"
-    ]
-},{
-    id: 2,
-    title: "string2",
-    author: "author2",
-    canBeDownloaded: true,
-    minAgeRestriction: null,
-    createdAt: "2022-09-15T14:37:24.782Z",
-    publicationDate: "2022-09-15T14:37:24.782Z",
-    availableResolutions: [
-        "P144"
-    ]
-},{
-    id: 3,
-    title: "string3",
-    author: "author3",
-    canBeDownloaded: true,
-    minAgeRestriction: null,
-    createdAt: "2022-10-15T14:37:24.782Z",
-    publicationDate: "2022-10-15T14:37:24.782Z",
-    availableResolutions: [
-        "P144"
-    ]
-}]
+enum Resolutions {
+    P144 = 'P144',
+    P240 = 'P240',
+    P480 = 'P480',
+    P720 = 'P720',
+    P1080 = 'P1080',
+    P1440 = 'P1440',
+    P2160 = 'P2160'
+}
+type VideDbType = {
+    id: number
+    title: string
+    author: string
+    canBeDownloaded: boolean,
+    minAgeRestriction: number | null
+    createdAt: string,
+    publicationDate: string,
+    availableResolutions: Resolutions[]
+}
+let videos: VideDbType[] = [
+]
 
-
-
-
-
-
-
-
-// let army = {
-//     minAge: 18,
-//     maxAge: 27,
-//     canJoin(user) {
-//         return user.age >= this.minAge && user.age < this.maxAge;
-//     }
-// }
 export const videoRepository = {
     findVideos() {return videos},
     findVideoById(id: number) {
